@@ -1,6 +1,0 @@
-{
-  "EInvoicing.Validation.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Projects\\einvoice-validator\\src\\EInvoicing.Validation.Api",
-  "EInvoicing.Validation.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Projects\\einvoice-validator\\src\\EInvoicing.Validation.Application",
-  "EInvoicing.Validation.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Projects\\einvoice-validator\\src\\EInvoicing.Validation.Domain",
-  "EInvoicing.Validation.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Projects\\einvoice-validator\\src\\EInvoicing.Validation.Infrastructure"
-}
