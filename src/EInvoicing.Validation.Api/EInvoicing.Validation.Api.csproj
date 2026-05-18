@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.14.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EInvoicing.Validation.Domain\EInvoicing.Validation.Domain.csproj" />
+    <ProjectReference Include="..\EInvoicing.Validation.Application\EInvoicing.Validation.Application.csproj" />
+    <ProjectReference Include="..\EInvoicing.Validation.Infrastructure\EInvoicing.Validation.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

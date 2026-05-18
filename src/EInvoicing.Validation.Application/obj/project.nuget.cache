@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "iostdp04CEE=",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\einvoice-validator\\src\\EInvoicing.Validation.Application\\EInvoicing.Validation.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ChesneyNyffels\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.1\\microsoft.extensions.dependencyinjection.abstractions.10.0.1.nupkg.sha512",
+    "C:\\Users\\ChesneyNyffels\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.1\\microsoft.extensions.logging.abstractions.10.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

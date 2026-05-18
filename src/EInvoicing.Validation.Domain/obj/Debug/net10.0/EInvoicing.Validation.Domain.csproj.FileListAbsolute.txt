@@ -1,0 +1,11 @@
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Domain\bin\Debug\net10.0\EInvoicing.Validation.Domain.deps.json
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Domain\bin\Debug\net10.0\EInvoicing.Validation.Domain.dll
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Domain\bin\Debug\net10.0\EInvoicing.Validation.Domain.pdb
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Domain\obj\Debug\net10.0\EInvoicing.Validation.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Domain\obj\Debug\net10.0\EInvoicing.Validation.Domain.AssemblyInfoInputs.cache
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Domain\obj\Debug\net10.0\EInvoicing.Validation.Domain.AssemblyInfo.cs
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Domain\obj\Debug\net10.0\EInvoicing.Validation.Domain.csproj.CoreCompileInputs.cache
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Domain\obj\Debug\net10.0\EInvoicing.Validation.Domain.dll
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Domain\obj\Debug\net10.0\refint\EInvoicing.Validation.Domain.dll
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Domain\obj\Debug\net10.0\EInvoicing.Validation.Domain.pdb
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Domain\obj\Debug\net10.0\ref\EInvoicing.Validation.Domain.dll

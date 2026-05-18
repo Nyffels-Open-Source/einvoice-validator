@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "XrtexTD/O5U=",
+  "success": true,
+  "projectFilePath": "C:\\Projects\\einvoice-validator\\src\\EInvoicing.Validation.Api\\EInvoicing.Validation.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ChesneyNyffels\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.1\\microsoft.aspnetcore.openapi.10.0.1.nupkg.sha512",
+    "C:\\Users\\ChesneyNyffels\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512",
+    "C:\\Users\\ChesneyNyffels\\.nuget\\packages\\scalar.aspnetcore\\2.14.14\\scalar.aspnetcore.2.14.14.nupkg.sha512"
+  ],
+  "logs": []
+}

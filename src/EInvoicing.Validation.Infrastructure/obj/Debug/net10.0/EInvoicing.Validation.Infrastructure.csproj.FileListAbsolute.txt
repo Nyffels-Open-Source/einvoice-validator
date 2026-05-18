@@ -1,0 +1,17 @@
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\obj\Debug\net10.0\EInvoicing.Validation.Infrastructure.csproj.AssemblyReference.cache
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\obj\Debug\net10.0\EInvoicing.Validation.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\obj\Debug\net10.0\EInvoicing.Validation.Infrastructure.AssemblyInfoInputs.cache
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\obj\Debug\net10.0\EInvoicing.Validation.Infrastructure.AssemblyInfo.cs
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\obj\Debug\net10.0\EInvoicing.Validation.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\bin\Debug\net10.0\EInvoicing.Validation.Infrastructure.deps.json
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\bin\Debug\net10.0\EInvoicing.Validation.Infrastructure.dll
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\bin\Debug\net10.0\EInvoicing.Validation.Infrastructure.pdb
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\bin\Debug\net10.0\EInvoicing.Validation.Application.dll
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\bin\Debug\net10.0\EInvoicing.Validation.Domain.dll
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\bin\Debug\net10.0\EInvoicing.Validation.Domain.pdb
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\bin\Debug\net10.0\EInvoicing.Validation.Application.pdb
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\obj\Debug\net10.0\EInvoici.095DE235.Up2Date
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\obj\Debug\net10.0\EInvoicing.Validation.Infrastructure.dll
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\obj\Debug\net10.0\refint\EInvoicing.Validation.Infrastructure.dll
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\obj\Debug\net10.0\EInvoicing.Validation.Infrastructure.pdb
+C:\Projects\einvoice-validator\src\EInvoicing.Validation.Infrastructure\obj\Debug\net10.0\ref\EInvoicing.Validation.Infrastructure.dll
