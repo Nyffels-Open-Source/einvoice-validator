@@ -67,7 +67,7 @@ public sealed class KositValidationEngine(ILogger<KositValidationEngine> logger)
                 var output = NormalizeWhitespace(string.IsNullOrWhiteSpace(stderr) ? stdout : stderr);
                 logger.LogError("KoSIT validator exited with code {ExitCode}. Output: {Output}", process.ExitCode, output);
                 return BuildResult(false, profile, documentType, artefacts,
-                    [new ValidationMessageDto("fatal", "VALIDATOR-UNAVAILABLE", "The local validator engine could not complete validation.", null)], []);
+                    [new ValidationMessageDto("fatal", "VALIDATOR-EXECUTION-FAILED", BuildExecutionFailureMessage(process.ExitCode, output), null)], []);
             }
 
             var messages = ParseReport(report);
@@ -130,6 +130,14 @@ public sealed class KositValidationEngine(ILogger<KositValidationEngine> logger)
 
     private static string NormalizeWhitespace(string value)
         => string.Join(' ', value.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries));
+
+    private static string BuildExecutionFailureMessage(int exitCode, string? output)
+    {
+        if (string.IsNullOrWhiteSpace(output))
+            return $"The local validator engine exited with code {exitCode} before producing a report.";
+
+        return $"The local validator engine exited with code {exitCode} before producing a report. Output: {output}";
+    }
 
     private static ValidationResultDto Unavailable(ValidationProfile profile, DocumentType documentType, ValidationArtefacts artefacts)
         => BuildResult(false, profile, documentType, artefacts,
