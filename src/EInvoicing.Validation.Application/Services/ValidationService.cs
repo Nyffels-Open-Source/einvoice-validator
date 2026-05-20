@@ -50,20 +50,23 @@ public sealed class ValidationService(
                     [], null, false);
             }
 
-            ValidationArtefacts artefacts;
-            try
+            var artefacts = await LoadArtefactsAsync(profile, detection.DocumentType, ct);
+            if (artefacts is null)
             {
-                artefacts = await artefactProvider.GetCurrentAsync(profile, ct);
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Failed to load validation artefacts for profile {Profile}.", profile);
                 return Result(false, profile, detection.DocumentType, null,
                     [new ValidationMessageDto("fatal", "ARTEFACTS-UNAVAILABLE", "Validation artefacts are not available. Call POST /artefacts/update to download them.", null)],
                     [], null, false);
             }
 
             var validation = await validationEngine.ValidateAsync(tempFile, profile, detection.DocumentType, artefacts, ct);
+            if (ShouldRefreshArtefacts(validation))
+            {
+                logger.LogWarning("Validation failed with validator execution issue for profile {Profile}. Refreshing artefacts and retrying once.", profile);
+                var refreshedArtefacts = await LoadArtefactsAsync(profile, detection.DocumentType, ct, forceRefresh: true);
+                if (refreshedArtefacts is not null)
+                    validation = await validationEngine.ValidateAsync(tempFile, profile, detection.DocumentType, refreshedArtefacts, ct);
+            }
+
             if (!detection.IsClearlyPeppolBis3)
             {
                 var warnings = validation.Warnings.Concat([
@@ -81,6 +84,30 @@ public sealed class ValidationService(
                 File.Delete(tempFile);
         }
     }
+
+    private async Task<ValidationArtefacts?> LoadArtefactsAsync(ValidationProfile profile, DocumentType documentType, CancellationToken ct, bool forceRefresh = false)
+    {
+        try
+        {
+            if (forceRefresh)
+            {
+                await artefactProvider.UpdateAsync(profile, ct);
+                return await artefactProvider.GetCurrentAsync(profile, ct);
+            }
+
+            return await artefactProvider.EnsureLatestAsync(profile, ct);
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Failed to load validation artefacts for profile {Profile} and document type {DocumentType}.", profile, documentType);
+            return null;
+        }
+    }
+
+    private static bool ShouldRefreshArtefacts(ValidationResultDto validation)
+        => validation.Errors.Any(e =>
+            e.RuleId.Equals("VALIDATOR-UNAVAILABLE", StringComparison.OrdinalIgnoreCase)
+            || e.RuleId.Equals("VALIDATOR-EXECUTION-FAILED", StringComparison.OrdinalIgnoreCase));
 
     private static ValidationResultDto Result(bool valid, ValidationProfile profile, DocumentType documentType, string? version, IReadOnlyList<ValidationMessageDto> errors, IReadOnlyList<ValidationMessageDto> warnings, string? artefactsPath, bool usedCached)
         => new(valid, ProfileParser.ToId(profile), documentType.ToString(), version, errors, warnings, new ValidationMetadataDto(ValidatorEngineName, usedCached, artefactsPath));
