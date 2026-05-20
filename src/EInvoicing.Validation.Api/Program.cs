@@ -4,6 +4,16 @@ using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var aspNetCoreUrls = Environment.GetEnvironmentVariable("ASPNETCORE_URLS");
+if (string.IsNullOrWhiteSpace(aspNetCoreUrls))
+{
+    var port = Environment.GetEnvironmentVariable("VALIDATION_PORT");
+    if (!string.IsNullOrWhiteSpace(port))
+    {
+        builder.WebHost.UseUrls($"http://+:{port}");
+    }
+}
+
 builder.Services.AddControllers();
 builder.Services.AddOpenApi(options =>
 {

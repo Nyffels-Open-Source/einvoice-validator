@@ -8,18 +8,18 @@ Local Dockerized validation API for UBL e-invoices. It wraps the KoSIT validator
 docker compose up --build
 ```
 
-The service listens on `http://localhost:8080`.
+The service listens on `http://localhost:<VALIDATION_PORT>` (default `8080`).
 
 OpenAPI is exposed at:
 
 ```text
-http://localhost:8080/openapi/v1.json
+http://localhost:<VALIDATION_PORT>/openapi/v1.json
 ```
 
 Interactive Scalar API documentation is exposed at:
 
 ```text
-http://localhost:8080/scalar/v1
+http://localhost:<VALIDATION_PORT>/scalar/v1
 ```
 
 ## Validate XML
@@ -27,7 +27,7 @@ http://localhost:8080/scalar/v1
 Maximum request body size is **10 MB** by default (configurable via `VALIDATION_MAX_REQUEST_SIZE_BYTES`).
 
 ```bash
-curl -X POST http://localhost:8080/validate \
+curl -X POST http://localhost:${VALIDATION_PORT:-8080}/validate \
   -H "Content-Type: application/xml" \
   --data-binary @tests/Fixtures/invalid-missing-buyer-endpoint.xml
 ```
@@ -64,7 +64,7 @@ Later validation requests reuse the cached local artefacts. Normal `/validate` e
 Manual update:
 
 ```bash
-curl -X POST http://localhost:8080/artefacts/update \
+curl -X POST http://localhost:${VALIDATION_PORT:-8080}/artefacts/update \
   -H "X-Admin-Api-Key: <your-key>"
 ```
 
@@ -80,10 +80,38 @@ environment:
   VALIDATION_ADMIN_API_KEY: changeme
 ```
 
+
+## Docker Compose example
+
+This example includes the configurable port and all supported runtime options:
+
+```yaml
+services:
+  einvoicing-validator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: einvoicing-validator
+    restart: unless-stopped
+    ports:
+      - "${VALIDATION_PORT:-8080}:${VALIDATION_PORT:-8080}"
+    volumes:
+      - ./data:/data
+    environment:
+      VALIDATION_PORT: ${VALIDATION_PORT:-8080}
+      ASPNETCORE_URLS: http://+:${VALIDATION_PORT:-8080}
+      VALIDATION_ARTEFACTS_PATH: /data/artefacts
+      VALIDATION_MAX_REQUEST_SIZE_BYTES: 10485760
+      VALIDATION_ADMIN_API_KEY: changeme
+```
+
+If `ASPNETCORE_URLS` is not set, the API also supports `VALIDATION_PORT` directly and binds to that port.
+
 ## Configuration
 
 | Variable | Default | Description |
 |---|---|---|
+| `VALIDATION_PORT` | `8080` | Port used by the API when `ASPNETCORE_URLS` is not set |
 | `VALIDATION_ARTEFACTS_PATH` | `/data/artefacts` | Directory where validator artefacts are stored |
 | `VALIDATION_MAX_REQUEST_SIZE_BYTES` | `10485760` (10 MB) | Maximum request body size for `POST /validate` |
 | `VALIDATION_ADMIN_API_KEY` | *(unset)* | API key required for `POST /artefacts/update`. Open when unset. |
